@@ -1,0 +1,11 @@
+--- vendor/breakpad/src/common/android/include/stab.h.orig
++++ vendor/breakpad/src/common/android/include/stab.h
+@@ -41,7 +41,8 @@
+ #endif  // __cplusplus
+ 
++#undef N_UNDF
+ #define _STAB_CODE_LIST       \
+   _STAB_CODE_DEF(UNDF,0x00)   \
+   _STAB_CODE_DEF(GSYM,0x20)   \
+   _STAB_CODE_DEF(FNAME,0x22)  \
+   _STAB_CODE_DEF(FUN,0x24)    \

@@ -1,0 +1,11 @@
+--- src/third_party/boringssl/BUILD.gn.orig
++++ src/third_party/boringssl/BUILD.gn
+@@ -12,7 +12,7 @@
+ # Config for us and everybody else depending on BoringSSL.
+ config("external_config") {
+   include_dirs = [ "src/include" ]
+-  if (is_component_build) {
++  if (is_component_build || is_electron_build) {
+     defines = [ "BORINGSSL_SHARED_LIBRARY" ]
+   }
+ }

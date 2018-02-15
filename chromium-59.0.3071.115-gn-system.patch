@@ -1,0 +1,53 @@
+--- build/linux/unbundle/libjpeg.gn
++++ build/linux/unbundle/libjpeg.gn
+@@ -16,6 +16,10 @@
+   libs = [ "jpeg" ]
+ }
+ 
++config("system_libjpeg") {
++  defines = [ "USE_SYSTEM_LIBJPEG=1" ]
++}
++
+ source_set("simd") {
+ }
+ 
+Only in build/linux: unbundle/libusb.gn
+--- build/linux/unbundle/replace_gn_files.py
++++ build/linux/unbundle/replace_gn_files.py
+@@ -25,6 +25,7 @@
+   'libevent': 'base/third_party/libevent/BUILD.gn',
+   'libjpeg': 'build/secondary/third_party/libjpeg_turbo/BUILD.gn',
+   'libpng': 'third_party/libpng/BUILD.gn',
++  'libusb': 'third_party/libusb/BUILD.gn',
+   'libvpx': 'third_party/libvpx/BUILD.gn',
+   'libwebp': 'third_party/libwebp/BUILD.gn',
+   'libxml': 'third_party/libxml/BUILD.gn',
+Only in build/linux: unbundle/replace_gn_files.py.orig
+diff -up chromium-60.0.3112.78/build/linux/unbundle/libusb.gn.gnsystem chromium-60.0.3112.78/build/linux/unbundle/libusb.gn
+--- build/linux/unbundle/libusb.gn.gnsystem	2017-07-31 10:38:25.880951622 -0400
++++ build/linux/unbundle/libusb.gn	2017-07-31 10:38:25.879951641 -0400
+@@ -0,0 +1,24 @@
++# Copyright 2016 The Chromium Authors. All rights reserved.
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++
++import("//build/config/linux/pkg_config.gni")
++import("//build/shim_headers.gni")
++
++pkg_config("system_libusb") {
++  packages = [ "libusb-1.0" ]
++}
++
++shim_headers("libusb_shim") {
++  root_path = "src/libusb"
++  headers = [
++    "libusb.h",
++  ]
++}
++
++source_set("libusb") {
++  deps = [
++    ":libusb_shim",
++  ]
++  public_configs = [ ":system_libusb" ]
++}

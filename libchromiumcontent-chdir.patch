@@ -1,0 +1,15 @@
+From Nicola Squartini <tensor5@gmail.com>
+https://git.archlinux.org/svntogit/community.git/tree/trunk?h=packages/electron
+----
+--- script/update
++++ script/update
+@@ -41,6 +41,8 @@ solutions = [
+ '''
+ 
+ def main():
++  os.chdir(SOURCE_ROOT)
++
+   args = parse_args()
+ 
+   if sys.platform in ['win32', 'cygwin']:
+

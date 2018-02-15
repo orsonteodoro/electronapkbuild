@@ -1,0 +1,58 @@
+--- tools/gn/bootstrap/bootstrap.py.orig
++++ tools/gn/bootstrap/bootstrap.py
+@@ -20,6 +20,7 @@
+ import logging
+ import optparse
+ import os
++import platform
+ import shutil
+ import subprocess
+ import sys
+@@ -31,6 +32,7 @@
+ 
+ is_win = sys.platform.startswith('win')
+ is_linux = sys.platform.startswith('linux')
++is_gnu_linux = is_linux and False #platform.libc_ver()[0].startswith('glibc')
+ is_mac = sys.platform.startswith('darwin')
+ is_posix = is_linux or is_mac
+ 
+@@ -166,7 +168,7 @@
+   mkdir_p(root_gen_dir)
+ 
+   write_buildflag_header_manually(root_gen_dir, 'base/allocator/features.h',
+-      {'USE_EXPERIMENTAL_ALLOCATOR_SHIM': 'true' if is_linux else 'false'})
++      {'USE_EXPERIMENTAL_ALLOCATOR_SHIM': 'true' if is_gnu_linux else 'false'})
+ 
+   write_buildflag_header_manually(root_gen_dir, 'base/debug/debugging_flags.h',
+       {
+@@ -379,8 +381,6 @@
+       'base/third_party/superfasthash/superfasthash.c',
+   ])
+   static_libraries['base']['sources'].extend([
+-      'base/allocator/allocator_check.cc',
+-      'base/allocator/allocator_extension.cc',
+       'base/at_exit.cc',
+       'base/base_paths.cc',
+       'base/base_switches.cc',
+@@ -431,6 +431,7 @@
+       'base/metrics/histogram.cc',
+       'base/metrics/histogram_base.cc',
+       'base/metrics/histogram_samples.cc',
++      'base/metrics/histogram_snapshot_manager.cc',
+       'base/metrics/metrics_hashes.cc',
+       'base/metrics/persistent_histogram_allocator.cc',
+       'base/metrics/persistent_memory_allocator.cc',
+@@ -607,9 +608,12 @@
+         ],
+         'tool': 'cxx',
+     }
+-    static_libraries['base']['sources'].extend([
++    if is_gnu_linux:
++      static_libraries['base']['sources'].extend([
+         'base/allocator/allocator_shim.cc',
+         'base/allocator/allocator_shim_default_dispatch_to_glibc.cc',
++      ])
++    static_libraries['base']['sources'].extend([
+         'base/memory/shared_memory_posix.cc',
+         'base/memory/shared_memory_tracker.cc',
+         'base/nix/xdg_util.cc',

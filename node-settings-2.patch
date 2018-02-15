@@ -1,0 +1,13 @@
+--- common.gypi.orig
++++ common.gypi
+@@ -24,8 +24,8 @@
+     'node_shared': 'true',
+     'node_shared_cares': 'true',
+     'node_shared_http_parser': 'true',
+-    'node_shared_libuv': 'false',
+-    'node_shared_openssl': 'false',
++    'node_shared_libuv': 'true',
++    'node_shared_openssl': 'true',
+     'node_shared_v8': 'true',
+     'node_shared_zlib': 'true',
+     'node_tag': '',

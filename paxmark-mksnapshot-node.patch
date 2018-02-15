@@ -1,0 +1,10 @@
+--- vendor/node/deps/v8/tools/run.py.orig
++++ vendor/node/deps/v8/tools/run.py
+@@ -9,4 +9,7 @@
+ import subprocess
+ import sys
+ 
++subprocess.call(["paxmark", "-m", "obj/v8/mksnapshot"])
++subprocess.call(["paxmark", "-m", "mksnapshot"])
++
+ sys.exit(subprocess.call(sys.argv[1:]))

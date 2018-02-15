@@ -1,0 +1,11 @@
+--- vendor/node/common.gypi.orig
++++ vendor/node/common.gypi
+@@ -11,7 +11,7 @@
+     'msvs_multi_core_compile': '0',   # we do enable multicore compiles, but not using the V8 way
+     'python%': 'python',
+ 
+-    'node_shared%': 'false',
++    'node_shared%': 'true',
+     'force_dynamic_crt%': 0,
+     'node_use_v8_platform%': 'true',
+     'node_use_bundled_v8%': 'true',

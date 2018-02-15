@@ -1,0 +1,11 @@
+--- script/update.orig
++++ script/update
+@@ -295,7 +295,7 @@
+     if sys.platform in ['win32', 'cygwin']:
+       args += ' use_experimental_allocator_shim=false'
+     if sys.platform == 'linux2':
+-      args += ' use_gtk3=false'
++      #args += ' use_gtk3=false'
+       if target_arch == 'mips64el':
+         args += ' clang_use_chrome_plugins=false'
+         args += ' enable_hangout_services_extension=true'

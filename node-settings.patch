@@ -1,0 +1,19 @@
+--- vendor/node/node.gyp.orig
++++ vendor/node/node.gyp
+@@ -12,12 +12,12 @@
+     'node_shared%': 'false',
+     'force_dynamic_crt%': 0,
+     'node_module_version%': '',
+-    'node_shared_zlib%': 'false',
++    'node_shared_zlib%': 'true',
+     'node_shared_http_parser%': 'false',
+-    'node_shared_cares%': 'false',
+-    'node_shared_libuv%': 'false',
++    'node_shared_cares%': 'true',
++    'node_shared_libuv%': 'true',
+     'node_use_openssl%': 'true',
+-    'node_shared_openssl%': 'false',
++    'node_shared_openssl%': 'true',
+     'node_v8_options%': '',
+     'node_enable_v8_vtunejit%': 'false',
+     'node_core_target_name%': 'node',

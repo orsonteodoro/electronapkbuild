@@ -1,0 +1,11 @@
+--- src/build/config/BUILDCONFIG.gn.orig
++++ src/build/config/BUILDCONFIG.gn
+@@ -493,7 +493,7 @@
+   "//build/config/compiler:no_rtti",
+   "//build/config/compiler:runtime_library",
+   "//build/config/sanitizers:default_sanitizer_flags",
+-  "//chromiumcontent:mas_build",
++  #"//chromiumcontent:mas_build",
+ ]
+ if (is_win) {
+   default_compiler_configs += [

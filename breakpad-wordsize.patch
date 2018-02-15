@@ -1,0 +1,13 @@
+--- breakpad/src/common/dwarf/elf_reader.cc.orig
++++ breakpad/src/common/dwarf/elf_reader.cc
+@@ -37,6 +37,10 @@
+ #include <fcntl.h>
+ #include <string.h>
+ 
++#ifndef __GLIBC__
++#include <bits/reg.h>
++#endif
++
+ #include <algorithm>
+ #include <map>
+ #include <string>

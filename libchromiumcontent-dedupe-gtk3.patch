@@ -1,0 +1,9 @@
+--- src/build/config/linux/gtk/gtk.gni.orig
++++ src/build/config/linux/gtk/gtk.gni
+@@ -11,5 +11,5 @@
+   # TODO(thomasanderson): Currently, the 32-bit clusterfuzz schroot does not
+   # have libgtk-3-0 installed.  set use_gtk3 = true on all architectures when
+   # the package is added (crbug.com/699669).
+-  use_gtk3 = target_cpu == "x64"
++  #use_gtk3 = target_cpu == "x64"
+ }

@@ -1,0 +1,16 @@
+From Nicola Squartini <tensor5@gmail.com>
+https://git.archlinux.org/svntogit/community.git/tree/trunk?h=packages/electron
+----
+--- chromiumcontent/BUILD.gn.orig
++++ chromiumcontent/BUILD.gn
+@@ -1,6 +1,10 @@
++declare_args() {
++  is_electron_build = true
++}
++
+ group("targets") {
+   deps = []
+ 
+   # Build these targets when building libchromiumcontent's
+   # "static_library" or "shared_library"
+   if (is_electron_build) {

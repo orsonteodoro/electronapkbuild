@@ -1,0 +1,25 @@
+--- common.gypi.orig
++++ common.gypi
+@@ -163,6 +163,7 @@
+               '-lcrypto',
+               '-lhttp_parser',
+               '-lz',
++              '-luv',
+             ],
+             # Prevent the linker from stripping symbols.
+             'ldflags': [
+@@ -187,12 +188,12 @@
+       }],
+       ['_target_name=="libuv"', {
+         'conditions': [
+-          ['OS=="win"', {
++          ['OS=="win" or OS=="linux"', {
+             # Expose libuv's symbols.
+             'defines': [
+               'BUILDING_UV_SHARED=1',
+             ],
+-          }],  # OS=="win"
++          }],  # OS=="win" or OS=="linux"
+         ],
+       }],
+       ['_target_name.startswith("crashpad")', {

@@ -1,0 +1,10 @@
+--- vendor/node/node.gyp.orig
++++ vendor/node/node.gyp
+@@ -21,6 +21,7 @@
+     'node_v8_options%': '',
+     'node_enable_v8_vtunejit%': 'false',
+     'node_core_target_name%': 'node',
++    'debug_http2%': 0,
+     'library_files': [
+       'lib/internal/bootstrap_node.js',
+       'lib/async_hooks.js',

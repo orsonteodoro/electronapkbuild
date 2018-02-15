@@ -1,0 +1,34 @@
+--- third_party/angle/src/vulkan_support/BUILD.gn.orig
++++ third_party/angle/src/vulkan_support/BUILD.gn
+@@ -190,6 +190,10 @@
+   if (is_win) {
+     cflags = [ "/wd4201" ]
+   }
++  if (is_linux) {
++    # assume getauxval() is available
++    defines += [ "HAVE_GETAUXVAL" ]
++  }
+ }
+ 
+ static_library("vulkan_loader") {
+--- third_party/vulkan-validation-layers/src/loader/loader.c.orig
++++ third_party/vulkan-validation-layers/src/loader/loader.c
+@@ -30,7 +30,9 @@
+ #include <stdarg.h>
+ #include <stdbool.h>
+ #include <string.h>
++#if defined(HAVE_GETAUXVAL)
+ #include <stddef.h>
++#endif
+ 
+ #include <sys/types.h>
+ #if defined(_WIN32)
+@@ -218,6 +220,8 @@
+     return secure_getenv(name);
+ #elif defined(HAVE___SECURE_GETENV)
+     return __secure_getenv(name);
++#elif defined(HAVE_GETAUXVAL)
++    return getauxval(AT_SECURE) ? NULL : getenv(name);
+ #else
+ #pragma message("Warning:  Falling back to non-secure getenv for environmental lookups!  Consider" \
+                 " updating to a different libc.")

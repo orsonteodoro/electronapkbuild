@@ -1,0 +1,11 @@
+--- atom/common/api/atom_bindings.h.orig
++++ atom/common/api/atom_bindings.h
+@@ -12,7 +12,7 @@
+ #include "base/strings/string16.h"
+ #include "native_mate/arguments.h"
+ #include "v8/include/v8.h"
+-#include "vendor/node/deps/uv/include/uv.h"
++#include <uv.h>
+ 
+ namespace node {
+ class Environment;

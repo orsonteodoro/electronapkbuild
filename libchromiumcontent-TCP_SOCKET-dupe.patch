@@ -1,0 +1,10 @@
+--- src/content/public/common/socket_permission_request.h.orig
++++ src/content/public/common/socket_permission_request.h
+@@ -14,6 +14,7 @@
+ 
+ // This module provides helper types for checking socket permission.
+ 
++#undef TCP_LISTEN
+ struct SocketPermissionRequest {
+   enum OperationType {
+     NONE = 0,

@@ -1,0 +1,10 @@
+--- vendor/breakpad/breakpad.gyp.orig
++++ vendor/breakpad/breakpad.gyp
+@@ -507,6 +507,7 @@
+           'include_dirs': [
+             'src',
+             '..',
++            'src/common/android/include/'
+           ],
+         },
+         {

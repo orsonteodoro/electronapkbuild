@@ -1,0 +1,9 @@
+--- chromiumcontent/BUILD.gn.orig
++++ chromiumcontent/BUILD.gn
+@@ -1,5 +1,5 @@
+ declare_args() {
+-  is_electron_build = true
++  #is_electron_build = true
+ }
+ 
+ group("targets") {

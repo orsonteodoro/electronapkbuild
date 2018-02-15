@@ -1,0 +1,9 @@
+--- chromiumcontent/config.gni.orig
++++ chromiumcontent/config.gni
+@@ -1,5 +1,5 @@
+ if (is_electron_build) {
+-  component_electron = "shared_library"
++  #component_electron = "shared_library"
+ } else {
+   # Due to a bug in how GN applies defaults to template targets invoked
+   # via the "target" function, we cannot fall back to the "component" template.

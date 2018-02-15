@@ -1,0 +1,52 @@
+--- chromiumcontent/BUILD.gn.orig
++++ chromiumcontent/BUILD.gn
+@@ -38,7 +38,11 @@
+     ]
+ 
+     if (is_linux) {
+-      deps += [ "//chrome/browser/ui/libgtkui:libgtk2ui" ]
++      if (use_gtk3) {
++        deps += [ "//chrome/browser/ui/libgtkui:libgtk3ui" ]
++      } else {
++        deps += [ "//chrome/browser/ui/libgtkui:libgtk2ui" ]
++      }
+     }
+ 
+     if (is_component_build) {
+@@ -159,15 +163,27 @@
+     # the object files instead of just depending on it.
+     static_library("libgtkui") {
+       complete_static_lib = true
+-      sources = [
+-        "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/app_indicator_icon.o",
+-        "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/app_indicator_icon_menu.o",
+-        "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/gtk_util.o",
+-        "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/gtk_status_icon.o",
+-        "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/menu_util.o",
+-        "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/skia_utils_gtk.o",
+-        "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/unity_service.o",
+-      ]
++      if (use_gtk3) {
++        sources = [
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk3ui/app_indicator_icon.o",
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk3ui/app_indicator_icon_menu.o",
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk3ui/gtk_util.o",
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk3ui/gtk_status_icon.o",
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk3ui/menu_util.o",
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk3ui/skia_utils_gtk.o",
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk3ui/unity_service.o",
++        ]
++      } else {
++        sources = [
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/app_indicator_icon.o",
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/app_indicator_icon_menu.o",
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/gtk_util.o",
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/gtk_status_icon.o",
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/menu_util.o",
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/skia_utils_gtk.o",
++          "$root_out_dir/obj/chrome/browser/ui/libgtkui/libgtk2ui/unity_service.o",
++        ]
++      }
+     }
+   }
+ 

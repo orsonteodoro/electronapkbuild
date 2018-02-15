@@ -1,0 +1,10 @@
+--- script/update.orig
++++ script/update
+@@ -80,7 +80,6 @@
+     install_aarch64_bintools()
+ 
+   return (apply_patches(args.skip_patches, target_arch) or
+-          copy_chromiumcontent_files() or
+           setup_mips64el_toolchain(target_arch) or
+           run_gn(target_arch, args.defines))
+ 

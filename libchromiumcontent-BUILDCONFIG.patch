@@ -1,0 +1,17 @@
+--- src/build/config/BUILDCONFIG.gn.orig
++++ src/build/config/BUILDCONFIG.gn
+@@ -151,6 +151,14 @@
+   host_toolchain = ""
+ 
+   # DON'T ADD MORE FLAGS HERE. Read the comment above.
++  is_gnu_linux = false
++  is_component_build = false
++  component_electron = "static_library"
++  v8_static_library = true
++  host_toolchain = "//build/toolchain/linux:x64"
++  mas_build = false
++  is_electron_build = true
++  use_gtk3 = true
+ }
+ 
+ declare_args() {

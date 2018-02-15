@@ -1,0 +1,17 @@
+From: https://git.archlinux.org/svntogit/community.git/tree/trunk/gtk3-message-box.patch?h=packages/electron
+Author: Nicola Squartini <tensor5@gmail.com>
+----
+--- atom/browser/ui/message_box_gtk.cc.orig
++++ atom/browser/ui/message_box_gtk.cc
+@@ -197,7 +197,11 @@
+ }
+ 
+ void GtkMessageBox::OnCheckboxToggled(GtkWidget* widget) {
++#if GTK_MAJOR_VERSION > 2
++  checkbox_checked_ = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
++#else
+   checkbox_checked_ = GTK_TOGGLE_BUTTON(widget)->active;
++#endif
+ }
+ 
+ }  // namespace
