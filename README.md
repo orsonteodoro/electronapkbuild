@@ -12,6 +12,8 @@ This package requires a patched libuv.  You can find the patch at: https://githu
 
 You may need to disable check for unit tests if you have a bad router or it fails.
 
+You can either use a patched libuv (which is preferred to minimize compile time and duplicate binary code) or use the internal libuv but you need to modify some things.
+
 ### Building
 
 Rename this folder to electron and place it in testing
