@@ -17,14 +17,14 @@ You may need to disable check for unit tests if you have a bad router or it fail
 Rename this folder to electron and place it in testing
 
 To build run:
-abuild snapshot
-abuild checksum
-abuild -rK
+* abuild snapshot
+* abuild checksum
+* abuild -rK
 
 To run:
-cd src/*2/out/R
-paxmark -cm electron
-./electron --help
+* cd src/*2/out/R
+* paxmark -cm electron
+* ./electron --help
 
 ## What works?
 
