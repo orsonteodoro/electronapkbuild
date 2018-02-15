@@ -28,7 +28,11 @@ paxmark -cm electron
 
 ## What works?
 
-The electron executible runs --help with paxmark -cm but gentoo puts -r (disable RANDMMAP)
+The electron executible runs (but still segfaults at the end) with --help.
+
+## NOTES
+
+You only need paxmark -cm for electron to work with --help but gentoo puts -r (disable RANDMMAP) for some reason.
 
 
 ## BUGS
